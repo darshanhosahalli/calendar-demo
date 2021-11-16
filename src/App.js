@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { WeeklyCalendar } from 'react-week-picker';
+import 'react-week-picker/src/lib/calendar.css';
 
 function App() {
+
+  const handleJumpToCurrentWeek = (currenDate) => {
+    console.log(`current date: ${currenDate}`);
+  }
+
+  const handleWeekPick = (startDate, endDate) => {
+    console.log(`${startDate} to ${endDate}`);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-testid="calendar" >
+      <WeeklyCalendar onWeekPick={handleWeekPick} jumpToCurrentWeekRequired={true} onJumpToCurrentWeek={handleJumpToCurrentWeek}/>
     </div>
   );
 }
